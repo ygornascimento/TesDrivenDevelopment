@@ -21,6 +21,8 @@
 		5C2901831F8F6DE700803663 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C2901821F8F6DE700803663 /* LaunchScreen.storyboard */; };
 		D2A5F20B1F4A9144005CD714 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2A5F20A1F4A9144005CD714 /* Assets.xcassets */; };
 		D2A5F2211F4A96D0005CD714 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */; };
+		F447A6E82445C92E00334179 /* ViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F447A6E72445C92E00334179 /* ViewControllers.swift */; };
+		F447A6EB2445CA7C00334179 /* RootViewController+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F447A6EA2445CA7C00334179 /* RootViewController+Tests.swift */; };
 		F4E68DC12443B83700319191 /* DataModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E68DC02443B83700319191 /* DataModelTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +55,8 @@
 		D2A5F20A1F4A9144005CD714 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2A5F20F1F4A9144005CD714 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F447A6E72445C92E00334179 /* ViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllers.swift; sourceTree = "<group>"; };
+		F447A6EA2445CA7C00334179 /* RootViewController+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RootViewController+Tests.swift"; sourceTree = "<group>"; };
 		F4E68DC02443B83700319191 /* DataModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataModelTests.swift; path = FitNessTests/Cases/DataModelTests.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -77,6 +81,8 @@
 		0A21C7D621C6BF8B00169D8B /* FitNessTests */ = {
 			isa = PBXGroup;
 			children = (
+				F447A6E92445CA3B00334179 /* Test Extensions */,
+				F447A6E62445C90200334179 /* Test Classes */,
 				0A21C7D921C6BF8B00169D8B /* Info.plist */,
 				0A21C7E321C70C5800169D8B /* Cases */,
 			);
@@ -197,6 +203,22 @@
 			path = FitNess;
 			sourceTree = "<group>";
 		};
+		F447A6E62445C90200334179 /* Test Classes */ = {
+			isa = PBXGroup;
+			children = (
+				F447A6E72445C92E00334179 /* ViewControllers.swift */,
+			);
+			path = "Test Classes";
+			sourceTree = "<group>";
+		};
+		F447A6E92445CA3B00334179 /* Test Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F447A6EA2445CA7C00334179 /* RootViewController+Tests.swift */,
+			);
+			path = "Test Extensions";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -301,8 +323,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F447A6EB2445CA7C00334179 /* RootViewController+Tests.swift in Sources */,
 				F4E68DC12443B83700319191 /* DataModelTests.swift in Sources */,
 				0A21C7E021C6CF1200169D8B /* AppModelTests.swift in Sources */,
+				F447A6E82445C92E00334179 /* ViewControllers.swift in Sources */,
 				0A21C7E221C70AE400169D8B /* StepCountControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
