@@ -44,6 +44,9 @@ class AppModelTests: XCTestCase {
   }
 
   // MARK: - Given
+  func givenGoalSet() {
+    sut.dataModel.goal = 1000
+  }
 
   // MARK: - Lifecycle
 
@@ -53,10 +56,25 @@ class AppModelTests: XCTestCase {
   }
 
   // MARK: - Start
+
+  func testModelWithNoGoal_whenStarted_throwsError() {
+    XCTAssertThrowsError(try sut.start())
+  }
+
+  func testStart_withGoalSet_doesNotThrow() {
+    //given
+    givenGoalSet()
+
+    //then
+    XCTAssertNoThrow(try sut.start())
+  }
   
   func testAppModel_whenStarted_isInInProgressState() {
+    //givem
+    givenGoalSet()
+
     // when started
-    sut.start()
+    try? sut.start()
 
     // then it is in inProgress
     let newState = sut.appState
