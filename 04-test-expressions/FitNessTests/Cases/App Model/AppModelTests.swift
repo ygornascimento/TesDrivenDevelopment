@@ -44,6 +44,11 @@ class AppModelTests: XCTestCase {
   }
 
   // MARK: - Given
+  func givenInProgress() {
+    givenGoalSet()
+    try! sut.start()
+  }
+
   func givenGoalSet() {
     sut.dataModel.goal = 1000
   }
@@ -79,5 +84,16 @@ class AppModelTests: XCTestCase {
     // then it is in inProgress
     let newState = sut.appState
     XCTAssertEqual(newState, AppState.inProgress)
+  }
+
+  func testAppModel_whenReset_isInNotStartedState() {
+    //given
+    givenInProgress()
+
+    //when
+    sut.restart()
+
+    //then
+    XCTAssertEqual(sut.appState, .notStarted)
   }
 }
