@@ -31,6 +31,8 @@
 		5C2901831F8F6DE700803663 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C2901821F8F6DE700803663 /* LaunchScreen.storyboard */; };
 		D2A5F20B1F4A9144005CD714 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2A5F20A1F4A9144005CD714 /* Assets.xcassets */; };
 		D2A5F2211F4A96D0005CD714 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */; };
+		F4C95EC024503DA400AB1166 /* ButtonObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C95EBF24503DA400AB1166 /* ButtonObserver.swift */; };
+		F4D0CE762451B077006C7A3E /* RootViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D0CE752451B076006C7A3E /* RootViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,8 @@
 		D2A5F20A1F4A9144005CD714 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2A5F20F1F4A9144005CD714 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F4C95EBF24503DA400AB1166 /* ButtonObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonObserver.swift; sourceTree = "<group>"; };
+		F4D0CE752451B076006C7A3E /* RootViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RootViewControllerTests.swift; path = "FitNessTests/Test Classes/RootViewControllerTests.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				0A2EC8E121D41D030091A995 /* ViewControllers.swift */,
+				F4C95EBF24503DA400AB1166 /* ButtonObserver.swift */,
 			);
 			path = "Test Classes";
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 		0A4E7CE4220773F6000C3B93 /* App Layer */ = {
 			isa = PBXGroup;
 			children = (
+				F4D0CE752451B076006C7A3E /* RootViewControllerTests.swift */,
 			);
 			path = "App Layer";
 			sourceTree = "<group>";
@@ -391,6 +397,8 @@
 				0AEC71F021D6EE8A00E836EB /* AppModel+Tests.swift in Sources */,
 				0AB709B9220CDFAE005C0AB0 /* AlertCenterTests.swift in Sources */,
 				0A2EC8E221D41D030091A995 /* ViewControllers.swift in Sources */,
+				F4C95EC024503DA400AB1166 /* ButtonObserver.swift in Sources */,
+				F4D0CE762451B077006C7A3E /* RootViewControllerTests.swift in Sources */,
 				0A21C7E221C70AE400169D8B /* StepCountControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,6 +441,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 44ST363BTK;
 				INFOPLIST_FILE = FitNessTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -454,6 +463,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 44ST363BTK;
 				INFOPLIST_FILE = FitNessTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -582,10 +592,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 44ST363BTK;
 				INFOPLIST_FILE = FitNess/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.FitNess;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.ynascimento.FitNess;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -598,10 +608,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 44ST363BTK;
 				INFOPLIST_FILE = FitNess/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.FitNess;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.ynascimento.FitNess;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
