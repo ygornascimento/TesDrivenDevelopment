@@ -39,6 +39,7 @@ class AlertCenterTests: XCTestCase {
   }
 
   override func tearDown() {
+    AlertCenter.instance.clearAlerts()
     sut = nil
     super.tearDown()
   }
@@ -84,4 +85,32 @@ class AlertCenterTests: XCTestCase {
     //then
     wait(for: [exp], timeout: 1)
   }
+
+  //MARK: - Alert Count
+  func testWhenInitialized_AlertCountIsZero() {
+    XCTAssertEqual(sut.alertCount, 0)
+  }
+
+  func testWhenAlertPosted_CountIsIncreased() {
+    //given
+    let alert = Alert("An alert")
+
+    //when
+    sut.postAlert(alert: alert)
+
+    //then
+    XCTAssertEqual(sut.alertCount, 1)
+  }
+
+  func testWhenCleared_CountIsZero() {
+    //given
+    let alert = Alert("An Alert")
+
+    //when
+    sut.clearAlerts()
+
+    //then
+    XCTAssertEqual(sut.alertCount, 0)
+  }
+  
 }

@@ -16,9 +16,11 @@ class RootViewControllerTests: XCTestCase {
   override func setUp() {
     super.setUp()
     sut = loadRootViewController()
+    sut.reset()
   }
 
   override func tearDown() {
+    AlertCenter.instance.clearAlerts()
     sut = nil
     super.tearDown()
   }

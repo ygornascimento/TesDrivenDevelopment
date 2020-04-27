@@ -32,6 +32,9 @@ import Foundation
 class AlertCenter {
   static var instance = AlertCenter()
   private var alertQueue: [Alert] = []
+  var alertCount: Int {
+    return alertQueue.count
+  }
 
   init(center: NotificationCenter = .default) {
     self.notificationCenter = center
@@ -46,6 +49,11 @@ class AlertCenter {
     alertQueue.append(alert)
     let notification = Notification(name: AlertNotification.name, object: self)
     notificationCenter.post(notification)
+  }
+
+  //MARK: - Alert Hadling
+  func clearAlerts() {
+    alertQueue.removeAll()
   }
 }
 
