@@ -47,7 +47,7 @@ class AlertCenter {
     //stub implementation
     guard !alertQueue.contains(alert) else { return }
     alertQueue.append(alert)
-    let notification = Notification(name: AlertNotification.name, object: self)
+    let notification = Notification(name: AlertNotification.name, object: self, userInfo: [AlertNotification.Keys.alert: alert])
     notificationCenter.post(notification)
   }
 
