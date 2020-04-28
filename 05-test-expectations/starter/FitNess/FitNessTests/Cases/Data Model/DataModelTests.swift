@@ -44,6 +44,15 @@ class DataModelTests: XCTestCase {
   }
 
   // MARK: - Given
+  func givenExpectationForNotification(alert: Alert) -> XCTestExpectation {
+    let exp = XCTNSNotificationExpectation(name: AlertNotification.name, object: AlertCenter.instance, notificationCenter: AlertCenter.instance.notificationCenter)
+    exp.handler = { notification -> Bool in
+      return notification.alert == alert
+    }
+    exp.expectedFulfillmentCount = 1
+    exp.assertForOverFulfill = true
+    return exp
+  }
   func givenSomeProgress() {
     sut.goal = 1000
     sut.distance = 10
@@ -148,4 +157,53 @@ class DataModelTests: XCTestCase {
     // then
     XCTAssertTrue(sut.caught)
   }
+
+  //MARK: - Alerts
+  func testWhenStepsHit25Percent_milestoneNotificationGenerated() {
+    //given
+    sut.goal = 400
+    let exp = givenExpectationForNotification(alert: .milestone25Percent)
+
+    //when
+    sut.steps = 100
+
+    //then
+    wait(for: [exp], timeout: 1)
+  }
+
+  func testWhenGoalReached_allMilestoneNotificationsSent() {
+    //given
+    sut.goal = 400
+    let expectations = [givenExpectationForNotification(alert: .milestone25Percent)]
+
+    //when
+    sut.steps = 400
+
+    //then
+    wait(for: expectations, timeout: 3, enforceOrder: true)
+  }
+
+  func testWhenStepsIncreased_onlyOneMilestoreNotificationSent() {
+    //given
+    sut.goal = 10
+    let expectations = [givenExpectationForNotification(alert: .milestone25Percent)]
+
+    //clear out the alerts to simlate user interaction
+    let alertObserver = AlertCenter.instance.notificationCenter.addObserver(forName: AlertNotification.name, object: nil, queue: .main) { (notification) in
+      if let alert = notification.alert {
+        AlertCenter.instance.clear(alert: alert)
+      }
+    }
+    //when
+    for step in 1...10 {
+      self.sut.steps = step
+      sleep(1)
+    }
+
+    //then
+    wait(for: expectations, timeout: 20, enforceOrder: true)
+    AlertCenter.instance.notificationCenter.removeObserver(alertObserver)
+
+  }
+
 }

@@ -32,7 +32,13 @@ class DataModel {
 
   // MARK: - Goal Calculation
   var goal: Int?
-  var steps: Int = 0
+  var steps: Int = 0 {
+    didSet {
+      updateForSteps()
+    }
+  }
+  //MARK: - Alerts
+  var sentAlerts: [Alert] = []
 
   var goalReached: Bool {
     if let goal = goal,
@@ -56,5 +62,27 @@ class DataModel {
     steps = 0
     distance = 0
     nessie.distance = 0
+    sentAlerts.removeAll()
+  }
+
+  //MARK: - UPdates due to distance
+//  func updateForSteps() {
+////    guard let goal = goal else { return }
+////    if Double(steps) >= Double(goal) * 25 {
+////      AlertCenter.instance.postAlert(alert: Alert.milestone25Percent)
+////    }
+
+    private func checkThreshold(percent: Double, alert: Alert) {
+      guard !sentAlerts.contains(alert), let goal = goal else {
+        return
+      }
+      if Double(steps) >= Double(goal) * percent {
+        AlertCenter.instance.postAlert(alert: alert)
+        sentAlerts.append(alert)
+      }
+    }
+
+  func updateForSteps() {
+    checkThreshold(percent: 0.25, alert: .milestone25Percent)
   }
 }

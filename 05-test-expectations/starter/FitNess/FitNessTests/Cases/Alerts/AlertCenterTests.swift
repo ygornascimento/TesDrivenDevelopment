@@ -132,5 +132,19 @@ class AlertCenterTests: XCTestCase {
     XCTAssertNotNil(postedAlert, "should have sent an alert")
     XCTAssertEqual(alert, postedAlert, "should have sent the original alert")
   }
+
+  //MARK: - Clearing Indicidual Alerts
+
+  func testWhenCleared_alertIsRemoved() {
+    //given
+    let alert = Alert("to be cleared")
+    sut.postAlert(alert: alert)
+
+    //when
+    sut.clear(alert: alert)
+
+    //then
+    XCTAssertEqual(sut.alertCount, 0)
+  }
   
 }
