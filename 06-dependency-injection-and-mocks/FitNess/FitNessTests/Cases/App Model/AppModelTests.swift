@@ -197,4 +197,18 @@ class AppModelTests: XCTestCase {
   }
 
   // MARK: - Pedometer
+  func testAppModel_whenStarted_startsPedometer() {
+    //given
+    givenGoalSet()
+    let exp = expectation(for: NSPredicate(block: { (thing, _) -> Bool in
+      return (thing as! AppModel).pedometerStarted
+    }), evaluatedWith: sut, handler: nil)
+
+    //when
+    try! sut.start()
+
+    //then
+    wait(for: [exp], timeout: 1)
+    XCTAssertTrue(sut.podometerStarted)
+  }
 }
