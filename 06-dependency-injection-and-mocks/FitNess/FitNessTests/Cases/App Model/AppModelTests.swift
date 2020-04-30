@@ -32,10 +32,12 @@ import XCTest
 class AppModelTests: XCTestCase {
 
   var sut: AppModel!
+  var mockPedometer: MockPedometer!
 
   override func setUp() {
     super.setUp()
-    sut = AppModel()
+    mockPedometer = MockPedometer()
+    sut = AppModel(pedometer: mockPedometer)
   }
 
   override func tearDown() {
@@ -200,15 +202,11 @@ class AppModelTests: XCTestCase {
   func testAppModel_whenStarted_startsPedometer() {
     //given
     givenGoalSet()
-    let exp = expectation(for: NSPredicate(block: { (thing, _) -> Bool in
-      return (thing as! AppModel).pedometerStarted
-    }), evaluatedWith: sut, handler: nil)
 
     //when
     try! sut.start()
 
     //then
-    wait(for: [exp], timeout: 1)
-    XCTAssertTrue(sut.podometerStarted)
+    XCTAssertTrue(mockPedometer.started)
   }
 }

@@ -32,16 +32,19 @@ import CoreMotion
 class AppModel {
 
   static let instance = AppModel()
-
   let dataModel = DataModel()
-
+  let pedometer: Pedometer?
+  //private(set) var pedometerStarted = false
   private(set) var appState: AppState = .notStarted {
     didSet {
       stateChangedCallback?(self)
     }
   }
-
   var stateChangedCallback: ((AppModel) -> ())?
+
+  init(pedometer: Pedometer = CMPedometer()) {
+    self.pedometer = pedometer
+  }
 
   // MARK: - App Lifecycle
   func start() throws {
@@ -49,6 +52,7 @@ class AppModel {
       throw AppError.goalNotSet
     }
     appState = .inProgress
+    startPedometer()
   }
 
   func pause() {
@@ -72,7 +76,10 @@ class AppModel {
     guard dataModel.goalReached else {
       throw AppError.invalidState
     }
-
     appState = .completed
+  }
+
+  func startPedometer() {
+    pedometer?.start()
   }
 }
