@@ -33,7 +33,7 @@ class AppModel {
 
   static let instance = AppModel()
   let dataModel = DataModel()
-  let pedometer: Pedometer?
+  var pedometer: Pedometer!
   //private(set) var pedometerStarted = false
   private(set) var appState: AppState = .notStarted {
     didSet {
@@ -50,6 +50,16 @@ class AppModel {
   func start() throws {
     guard dataModel.goal != nil else {
       throw AppError.goalNotSet
+    }
+
+    guard pedometer.pedometerAvailable else {
+      AlertCenter.instance.postAlert(alert: .noPedometer)
+      return
+    }
+
+    guard !pedometer.permissionDeclined else {
+      AlertCenter.instance.postAlert(alert: .notAuthorized)
+      return
     }
     appState = .inProgress
     startPedometer()
@@ -80,6 +90,13 @@ class AppModel {
   }
 
   func startPedometer() {
-    pedometer?.start()
+    pedometer.start { error in
+      if let error = error {
+        let alert = error.is(CMErrorMotionActivityNotAuthorized)
+          ? .notAuthorized : Alert(error.localizedDescription)
+        AlertCenter.instance.postAlert(alert: alert)
+      }
+    }
   }
+
 }
